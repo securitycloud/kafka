@@ -1,0 +1,13 @@
+[2015-05-18 14:01:46,477] ERROR Closing socket for /127.0.0.1 because of error (kafka.network.Processor)
+java.io.IOException: Broken pipe
+	at sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:471)
+	at kafka.api.TopicDataSend.writeTo(FetchResponse.scala:122)
+	at kafka.network.MultiSend.writeTo(Transmission.scala:101)
+	at kafka.api.FetchResponseSend.writeTo(FetchResponse.scala:219)
+	at kafka.network.Processor.write(SocketServer.scala:375)
+	at kafka.network.Processor.run(SocketServer.scala:247)
+	at java.lang.Thread.run(Thread.java:745)

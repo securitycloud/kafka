@@ -1,0 +1,9 @@
+Java HotSpot(TM) 64-Bit Server VM (25.45-b02) for linux-amd64 JRE (1.8.0_45-b14), built on Apr 10 2015 10:07:45 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+Memory: 4k page, physical 3898836k(2238632k free), swap 10238972k(10238972k free)
+CommandLine flags: -XX:+CMSClassUnloadingEnabled -XX:+CMSScavengeBeforeRemark -XX:+DisableExplicitGC -XX:InitialHeapSize=1073741824 -XX:+ManagementServer -XX:MaxHeapSize=1073741824 -XX:MaxNewSize=348966912 -XX:MaxTenuringThreshold=6 -XX:NewSize=348966912 -XX:OldPLABSize=16 -XX:OldSize=697933824 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseConcMarkSweepGC -XX:+UseParNewGC 
+2015-05-18T13:15:21.972+0200: 14,148: [GC (Allocation Failure) 14,148: [ParNew: 272640K->10708K(306688K), 0,0272030 secs] 272640K->10708K(1014528K), 0,0273607 secs] [Times: user=0,04 sys=0,00, real=0,02 secs] 
+2015-05-18T13:15:27.797+0200: 19,973: [GC (Allocation Failure) 19,973: [ParNew: 283348K->3724K(306688K), 0,0222787 secs] 283348K->3724K(1014528K), 0,0223982 secs] [Times: user=0,03 sys=0,00, real=0,02 secs] 
+2015-05-18T13:15:32.697+0200: 24,873: [GC (Allocation Failure) 24,873: [ParNew: 276364K->4753K(306688K), 0,0151073 secs] 276364K->4753K(1014528K), 0,0152284 secs] [Times: user=0,03 sys=0,00, real=0,02 secs] 
+2015-05-18T13:15:40.969+0200: 33,145: [GC (Allocation Failure) 33,145: [ParNew: 277393K->4826K(306688K), 0,0188974 secs] 277393K->4826K(1014528K), 0,0190070 secs] [Times: user=0,03 sys=0,00, real=0,01 secs] 
+2015-05-18T13:15:46.030+0200: 38,206: [GC (Allocation Failure) 38,206: [ParNew: 277466K->4847K(306688K), 0,0243388 secs] 277466K->4847K(1014528K), 0,0244729 secs] [Times: user=0,04 sys=0,00, real=0,02 secs] 
+2015-05-18T13:56:42.871+0200: 2495,048: [GC (Allocation Failure) 2495,048: [ParNew: 277487K->5213K(306688K), 0,0240911 secs] 277487K->5213K(1014528K), 0,0242145 secs] [Times: user=0,03 sys=0,00, real=0,02 secs] 
