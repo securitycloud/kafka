@@ -1,4 +1,4 @@
-package cz.muni.fi.kafka;
+package cz.muni.fi.kafka.rado;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
