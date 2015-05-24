@@ -33,7 +33,7 @@ public class ProducerMain {
                     //String string = line;
                     //JSONParser jsonParser = new JSONParser();
                     //JSONObject flow = (JSONObject) jsonParser.parse(line);
-                    KeyedMessage<JSONObject,String> data= new KeyedMessage<String, String>("verification-topic",line);
+                    KeyedMessage<String,String> data= new KeyedMessage<String, String>("securitycloud-testing-data",line);
                     producer.send(data);
                     line=bufferedReader.readLine();
                 }
