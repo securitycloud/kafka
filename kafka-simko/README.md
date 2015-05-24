@@ -7,7 +7,7 @@ Run kafka producer
 
 2.) to execute jar file try:
 
-        java -jar target/kafka-rado-1.0-SNAPSHOT-jar-with-dependencies.jar path/input-file 
+        java -jar target/kafka-simko-1.0-SNAPSHOT-jar-with-dependencies.jar path/input-file 
 
 Default topic is <b>securitycloud-testing-data</b>.
 
