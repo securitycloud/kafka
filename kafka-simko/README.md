@@ -1,7 +1,7 @@
 Run kafka producer
 ============================
 
-1.) to build in folder <b>kafka/kafka-rado</b> try:
+1.) to build in folder <b>kafka/kafka-simko</b> try:
 
         mvn clean compile assembly:single
 
