@@ -40,6 +40,9 @@ public class FromFileProducer {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.put("producer.type", "async");
+        props.put("batch.size", 5000);
+        props.put("partitioner.class", "cz.muni.fi.kafka.producer.SimplePartitioner");
         return props;
     }
 

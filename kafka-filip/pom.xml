@@ -13,8 +13,8 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Conf -->
-        <producer.topic>test</producer.topic>
-        <file>/home/filip/thesis/36846558lines.json</file>
+        <producer.topic>spark-test</producer.topic>
+        <file>/root/out</file>
         <!-- Dependency versions -->
         <scala.binary.version>2.11</scala.binary.version>
         <kafka.version>0.8.2.1</kafka.version>
