@@ -24,8 +24,8 @@ BASE_DIR=$(dirname $DIR)
 #ZOOKEEPER=localhost:2181
 #KAFKA_BROKER=localhost:9092
 
-ZOOKEEPER=10.16.31.200:2181
-KAFKA_BROKER=10.16.31.200:9092
+ZOOKEEPER=10.16.31.201:2181
+KAFKA_BROKER=10.16.31.201:9092
 
 # overwritten options
 while getopts "z:b:" option
@@ -39,15 +39,15 @@ echo "Using ${ZOOKEEPER} as the zookeeper. You can overwrite it with '-z yourloc
 echo "Using ${KAFKA_BROKER} as the kafka broker. You can overwrite it with '-b yourlocation'"
 
 # check if the topic exists. if not, create the topic
-EXIST=$($BASE_DIR/kafka/deploy/bin/kafka-topics.sh --describe --topic securitycloud-testing-data --zookeeper $ZOOKEEPER)
+EXIST=$(/root/kafka/kafka_2.11-0.8.2.1/bin/kafka-topics.sh --describe --topic securitycloud-testing-data --zookeeper $ZOOKEEPER)
 if [ -z "$EXIST" ]
   then
-    $BASE_DIR/kafka/deploy/bin/kafka-topics.sh --create --zookeeper $ZOOKEEPER --topic securitycloud-testing-data --partition 1 --replication-factor 1
+   /root/kafka/kafka_2.11-0.8.2.1/bin/kafka-topics.sh --create --zookeeper $ZOOKEEPER --topic securitycloud-testing-data --partition 12 --replication-factor 1
 fi
 
 # produce data ten times
 for var in 0 1 2 3 4 5 6 7 8 9
 do 
-  $BASE_DIR/kafka/deploy/bin/kafka-console-producer.sh < $BASE_DIR/kafka/dataset_json.json --topic securitycloud-testing-data --broker $KAFKA_BROKER
+  /root/kafka/kafka_2.11-0.8.2.1/bin/kafka-console-producer.sh < /root/dataset_json.json --batch-size 10000 --topic securitycloud-testing-data --broker $KAFKA_BROKER
 done
 
