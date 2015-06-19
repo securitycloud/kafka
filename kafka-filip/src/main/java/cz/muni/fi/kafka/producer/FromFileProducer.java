@@ -1,5 +1,6 @@
 package cz.muni.fi.kafka.producer;
 
+import kafka.javaapi.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -37,12 +38,13 @@ public class FromFileProducer {
      */
     private static Properties createProducerConfig() {
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put("producer.type", "async");
-        props.put("batch.size", 5000);
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, 5000);
         props.put("partitioner.class", "cz.muni.fi.kafka.producer.SimplePartitioner");
+        props.put("request.required.acks",0);
         return props;
     }
 
