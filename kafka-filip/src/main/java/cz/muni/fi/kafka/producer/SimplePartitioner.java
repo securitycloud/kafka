@@ -6,15 +6,18 @@ import kafka.utils.VerifiableProperties;
  
 public class SimplePartitioner implements Partitioner {
     
-    private Random rnd;
+    private static volatile int counter = 0;
+    private static final Object counterLock = new Object();
 
     public SimplePartitioner (VerifiableProperties props) {
-        rnd = new Random();
+        
     }
  
     public int partition(Object key, int a_numPartitions) {
-        int partition = rnd.nextInt(16) % a_numPartitions;
-        return partition;
+        synchronized (counterLock) {
+            counter = (counter + 1) % a_numPartitions;
+            return counter;
+        }
     }
  
 }
