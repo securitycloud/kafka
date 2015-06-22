@@ -1,4 +1,4 @@
-package cz.muni.fi.kafka.rado;
+package cz.muni.fi.kafka.storm;
 
 import java.io.BufferedReader;
 import java.io.File;

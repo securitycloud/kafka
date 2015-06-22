@@ -34,7 +34,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>cz.muni.fi.kafka.rado.FlowProducer</mainClass>
+                            <mainClass>cz.muni.fi.kafka.storm.FlowProducer</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

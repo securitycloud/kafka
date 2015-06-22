@@ -1,4 +1,4 @@
-package cz.muni.fi.kafka.rado;
+package cz.muni.fi.kafka.storm;
 
 import java.io.File;
 import java.util.Properties;
@@ -23,7 +23,7 @@ public class FlowProducer {
         Properties props = new Properties();
         props.put("metadata.broker.list", "localhost:9092");
         props.put("serializer.class", "kafka.serializer.StringEncoder");
-        props.put("partitioner.class", "cz.muni.fi.kafka.rado.RoundRobinPartitioner");
+        props.put("partitioner.class", "cz.muni.fi.kafka.storm.RoundRobinPartitioner");
         props.put("request.required.acks", "0");
         props.put("producer.type", "async");
 

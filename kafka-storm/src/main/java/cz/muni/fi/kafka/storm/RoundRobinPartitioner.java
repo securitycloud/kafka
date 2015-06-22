@@ -1,4 +1,4 @@
-package cz.muni.fi.kafka.rado;
+package cz.muni.fi.kafka.storm;
 
 import kafka.producer.Partitioner;
 import kafka.utils.VerifiableProperties;

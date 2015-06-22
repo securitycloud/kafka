@@ -1,4 +1,4 @@
-package cz.muni.fi.kafka.rado;
+package cz.muni.fi.kafka.storm;
 
 public interface FlowSource {
     
