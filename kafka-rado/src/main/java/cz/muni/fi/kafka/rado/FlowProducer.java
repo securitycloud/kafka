@@ -23,6 +23,7 @@ public class FlowProducer {
         Properties props = new Properties();
         props.put("metadata.broker.list", "localhost:9092");
         props.put("serializer.class", "kafka.serializer.StringEncoder");
+        props.put("partitioner.class", "cz.muni.fi.kafka.rado.RoundRobinPartitioner");
         props.put("request.required.acks", "0");
         props.put("producer.type", "async");
 
