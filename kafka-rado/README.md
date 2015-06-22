@@ -3,7 +3,7 @@ Run kafka producer
 
 1.) to build in folder <b>kafka/kafka-rado</b> try:
 
-        mvn clean compile assembly:single
+        mvn clean package
 
 2.) to execute jar file try:
 
