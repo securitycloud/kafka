@@ -7,7 +7,7 @@ Run kafka producer
 
 2.) to execute jar file try:
 
-        java -jar target/kafka-rado-1.0-SNAPSHOT-jar-with-dependencies.jar path/input-file batch-size
+        java -jar target/kafka-storm-1.0-SNAPSHOT-jar-with-dependencies.jar path/input-file batch-size
 
 
 Default topic is <b>storm-test</b>.
