@@ -13,12 +13,7 @@ public class FlowProducer {
         }
         String inputFile = args[0];
         
-        String topic;
-        if (args.length >= 2) {
-             topic = args[1];
-        } else {
-            topic = "securitycloud-testing-data";
-        }
+        String topic = "storm-test";
         
         Properties props = new Properties();
         props.put("metadata.broker.list", "localhost:9092");
