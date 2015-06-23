@@ -36,7 +36,7 @@ public class FlowProducer {
         FlowSource flowSource = new FileFlowSource(new File(inputFile));
         String flow;
         while ((flow = flowSource.nextFlow()) != null) {
-            KeyedMessage<String, String> data = new KeyedMessage<String, String>(topic, flow);
+            KeyedMessage<String, String> data = new KeyedMessage<String, String>(topic, "", flow);
             producer.send(data);
         }
         producer.close();
