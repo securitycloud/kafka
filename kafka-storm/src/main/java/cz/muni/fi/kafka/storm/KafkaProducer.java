@@ -6,7 +6,7 @@ import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
-public class FlowProducer {
+public class KafkaProducer {
     public static void main(String[] args) {
         if (args.length < 2) {
             throw new IllegalArgumentException("Missing argument: input_file batch_size" );
