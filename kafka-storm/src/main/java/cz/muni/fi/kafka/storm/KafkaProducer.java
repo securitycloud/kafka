@@ -33,12 +33,20 @@ public class KafkaProducer {
         ProducerConfig config = new ProducerConfig(props);
         Producer<String, String> producer = new Producer<String, String>(config);
         
+        System.out.println("1 * = 1 M lines sent");
         FlowSource flowSource = new FileFlowSource(new File(inputFile));
         String flow;
+        int count = 0;
         while ((flow = flowSource.nextFlow()) != null) {
             KeyedMessage<String, String> data = new KeyedMessage<String, String>(topic, "", flow);
             producer.send(data);
+            if (count == 1000000) {
+                count = 0;
+                System.out.print("*");
+            }
+            count++;
         }
+        System.out.println();
         producer.close();
     }
 }
