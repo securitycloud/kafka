@@ -14,7 +14,7 @@ import kafka.message.MessageAndMetadata;
 public class KafkaConsumer {
     
     public static void main(String[] args) {
-        String topic = "storm-test";
+        String topic = "storm-service";
         
         Properties props = new Properties();
         props.put("zookeeper.connect", "localhost:2181");
@@ -22,18 +22,19 @@ public class KafkaConsumer {
         props.put("zookeeper.session.timeout.ms", "6000");
         props.put("zookeeper.sync.time.ms", "2000");
         props.put("auto.commit.interval.ms", "60000");
+        props.put("consumer.timeout.ms", "100");
         ConsumerConfig consumerConfig = new ConsumerConfig(props);
         
         ConsumerConnector consumer = Consumer.createJavaConsumerConnector(consumerConfig);
         Map<String, Integer> topicCount = new HashMap();
-        topicCount.put(topic, 3); // number of threats
+        topicCount.put(topic, 1); // number of threats
         Map<String, List<KafkaStream<byte[], byte[]>>> consumerStreams = consumer.createMessageStreams(topicCount);
         List<KafkaStream<byte[], byte[]>> streams = consumerStreams.get(topic);
         for (final KafkaStream stream : streams) {
             ConsumerIterator<byte[], byte[]> ci = stream.iterator();
             while (ci.hasNext()) {
                 MessageAndMetadata<byte[], byte[]> mam = ci.next();
-                System.out.println(mam.partition() + "  " + new String(mam.message()));
+                System.out.println(new String(mam.message()));
             }
         }
     }
