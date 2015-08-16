@@ -1,20 +1,17 @@
-Run kafka producer
-============================
-
-1.) to create topic with partitions try:
-
-        bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic storm-test
-        bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 5 --topic storm-test
-
-2.) to build in folder <b>kafka/kafka-storm</b> (where pom.xml exist) try:
+<i>Build project:</i> It work in folder <b>kafka/kafka-storm</b> (where pom.xml exist):
 
         mvn clean package
 
-3.) to execute jar file try:
+Run kafka producer
+----------------------------
 
-        java -jar target/kafka-storm-1.0-SNAPSHOT-jar-with-dependencies.jar path/input-file batch-size
+It fill topic <b>storm-test</b> on localhost by input data :
 
+        java -cp target/kafka-storm-1.0-SNAPSHOT-jar-with-dependencies.jar cz.muni.fi.kafka.storm.KafkaProducer path/input-file batch-size
 
-Default topic is <b>storm-test</b>.
+Run kafka consumer
+----------------------------
 
-Default broker is <b>localhost:9092</b>.
+It download topic <b>storm-service</b> on localhost to standard output:
+
+        java -cp target/kafka-storm-1.0-SNAPSHOT-jar-with-dependencies.jar cz.muni.fi.kafka.storm.KafkaConsumer
