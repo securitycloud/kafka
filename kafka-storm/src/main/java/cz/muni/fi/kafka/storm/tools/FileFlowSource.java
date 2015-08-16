@@ -1,4 +1,4 @@
-package cz.muni.fi.kafka.storm;
+package cz.muni.fi.kafka.storm.tools;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class FileFlowSource implements FlowSource {
+public class FileFlowSource {
     
     private File file;
     private BufferedReader reader = null;
@@ -25,7 +25,6 @@ public class FileFlowSource implements FlowSource {
         }
     }
     
-    @Override
     public String nextFlow() {
         if (closed()) {
             return null;

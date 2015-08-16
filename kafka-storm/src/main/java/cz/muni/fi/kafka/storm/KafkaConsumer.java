@@ -1,11 +1,13 @@
 package cz.muni.fi.kafka.storm;
 
+import cz.muni.fi.kafka.storm.tools.KafkaUtil;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import kafka.api.FetchRequest;
 import kafka.api.FetchRequestBuilder;
 import kafka.api.PartitionOffsetRequestInfo;
@@ -18,13 +20,16 @@ import kafka.message.MessageAndOffset;
 
 public class KafkaConsumer {
 
-    private static final String clientName = "service";
-    private static final String broker = "localhost";
-    private static final int port = 9092;
-    private static final String topic = "storm-service";
-    private static final int partition = 0;
-
     public static void main(String[] args) {
+        
+        // Load parameters from properties
+        Properties projectProp = KafkaUtil.loadProperties();
+        String clientName = projectProp.getProperty("kafkaConsumer.clientName");
+        String broker = projectProp.getProperty("kafkaConsumer.broker");
+        int port = new Integer(projectProp.getProperty("kafkaConsumer.port"));
+        String topic = projectProp.getProperty("kafkaConsumer.topic");
+        int partition = new Integer(projectProp.getProperty("kafkaConsumer.partition"));
+
 
         // Prepare kafka consumer
         SimpleConsumer consumer = null;

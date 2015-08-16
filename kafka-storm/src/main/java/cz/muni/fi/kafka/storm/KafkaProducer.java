@@ -1,5 +1,7 @@
 package cz.muni.fi.kafka.storm;
 
+import cz.muni.fi.kafka.storm.tools.FileFlowSource;
+import cz.muni.fi.kafka.storm.tools.KafkaUtil;
 import java.io.File;
 import java.util.Properties;
 import kafka.javaapi.producer.Producer;
@@ -20,12 +22,18 @@ public class KafkaProducer {
             throw new IllegalArgumentException("Argument batch size is not number" );
         }
         
-        String topic = "storm-test";
+        
+        // Load parameters from properties
+        Properties projectProp = KafkaUtil.loadProperties();
+        String broker = projectProp.getProperty("kafkaProducer.broker");
+        String port = projectProp.getProperty("kafkaProducer.port");
+        String topic = projectProp.getProperty("kafkaProducer.topic");
+
         
         Properties props = new Properties();
-        props.put("metadata.broker.list", "localhost:9092");
+        props.put("metadata.broker.list", broker + ":" + port);
         props.put("serializer.class", "kafka.serializer.StringEncoder");
-        props.put("partitioner.class", "cz.muni.fi.kafka.storm.RoundRobinPartitioner");
+        props.put("partitioner.class", "cz.muni.fi.kafka.storm.tools.RoundRobinPartitioner");
         props.put("request.required.acks", "0");
         props.put("producer.type", "async");
         props.put("batch.size", batchSize);
@@ -34,7 +42,7 @@ public class KafkaProducer {
         Producer<String, String> producer = new Producer<String, String>(config);
         
         System.out.println("1 * = 1 M lines sent");
-        FlowSource flowSource = new FileFlowSource(new File(inputFile));
+        FileFlowSource flowSource = new FileFlowSource(new File(inputFile));
         String flow;
         int count = 0;
         while ((flow = flowSource.nextFlow()) != null) {

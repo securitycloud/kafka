@@ -2,16 +2,20 @@
 
         mvn clean package
 
+<i>Default configuration for project:</i> It is localized in file:
+
+        kafka/kafka-storm/src/resources/kafka.properties
+
 Run kafka producer
 ----------------------------
 
-It fills topic <b>storm-test</b> on localhost by input data :
+It fills topic by input data :
 
         java -cp target/kafka-storm-1.0-SNAPSHOT-jar-with-dependencies.jar cz.muni.fi.kafka.storm.KafkaProducer path/input-file batch-size
 
 Run kafka consumer
 ----------------------------
 
-It downloads topic <b>storm-service</b> on localhost to standard output:
+It downloads topic to standard output:
 
         java -cp target/kafka-storm-1.0-SNAPSHOT-jar-with-dependencies.jar cz.muni.fi.kafka.storm.KafkaConsumer
