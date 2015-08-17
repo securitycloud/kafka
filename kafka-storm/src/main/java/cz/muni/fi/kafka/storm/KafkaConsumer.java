@@ -54,35 +54,40 @@ public class KafkaConsumer {
             long[] offsets = response.offsets(topic, partition);
             long readOffset = offsets[0];
 
-            
-            // Fetch request and response
-            FetchRequestBuilder builder = new FetchRequestBuilder().clientId(clientName);
-            builder.addFetch(topic, partition, readOffset, 100000);
-            FetchRequest req = builder.build();
-            FetchResponse fetchResponse = consumer.fetch(req);
-            if (fetchResponse.hasError()) {
-                short errorCode = response.errorCode(topic, partition);
-                System.err.println("ERROR " + errorCode + " during fetch response");
-            }
-            List<ByteBufferMessageSet> listByteBufferMessageSets = new ArrayList<ByteBufferMessageSet>();
-            ByteBufferMessageSet byteBufferMessageSet = fetchResponse.messageSet(topic, partition);
-            listByteBufferMessageSets.add(byteBufferMessageSet);
-            for (MessageAndOffset messageAndOffset : listByteBufferMessageSets.get(0)) {
-                long currentOffset = messageAndOffset.offset();
-                if (currentOffset < readOffset) {
-                    System.err.println("ERROR: read offset is history");
+            int messages = 42;
+            while (messages > 0)  {
+                messages = 0;
+
+                // Fetch request and response
+                FetchRequestBuilder builder = new FetchRequestBuilder().clientId(clientName);
+                builder.addFetch(topic, partition, readOffset, 100000);
+                FetchRequest req = builder.build();
+                FetchResponse fetchResponse = consumer.fetch(req);
+                if (fetchResponse.hasError()) {
+                    short errorCode = response.errorCode(topic, partition);
+                    System.err.println("ERROR " + errorCode + " during fetch response");
                 }
-                
-                
-                // Parse message
-                readOffset = messageAndOffset.nextOffset();
-                ByteBuffer payload = messageAndOffset.message().payload();
-                byte[] bytes = new byte[payload.limit()];
-                payload.get(bytes);
-                try {
-                    System.out.println(new String(bytes, "UTF-8"));
-                } catch (UnsupportedEncodingException e) {
-                    System.err.println("ERROR: could not create string in UTF-8");
+                List<ByteBufferMessageSet> listByteBufferMessageSets = new ArrayList<ByteBufferMessageSet>();
+                ByteBufferMessageSet byteBufferMessageSet = fetchResponse.messageSet(topic, partition);
+                listByteBufferMessageSets.add(byteBufferMessageSet);
+                for (MessageAndOffset messageAndOffset : listByteBufferMessageSets.get(0)) {
+                    messages++;
+                    long currentOffset = messageAndOffset.offset();
+                    if (currentOffset < readOffset) {
+                        System.err.println("ERROR: read offset is history");
+                    }
+
+
+                    // Parse message
+                    readOffset = messageAndOffset.nextOffset();
+                    ByteBuffer payload = messageAndOffset.message().payload();
+                    byte[] bytes = new byte[payload.limit()];
+                    payload.get(bytes);
+                    try {
+                        System.out.println(new String(bytes, "UTF-8"));
+                    } catch (UnsupportedEncodingException e) {
+                        System.err.println("ERROR: could not create string in UTF-8");
+                    }
                 }
             }
         } finally {
