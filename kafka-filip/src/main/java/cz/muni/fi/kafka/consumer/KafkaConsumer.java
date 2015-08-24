@@ -53,8 +53,8 @@ public class KafkaConsumer {
             long[] offsets = response.offsets(topic, partition);
             long readOffset = offsets[0];
 
-            int messages = 42;
-            while (messages > 0)  {
+            int messages = 0;
+            while (messages == 0)  {
                 messages = 0;
 
                 // Fetch request and response
@@ -87,6 +87,12 @@ public class KafkaConsumer {
                     } catch (UnsupportedEncodingException e) {
                         System.err.println("ERROR: could not create string in UTF-8");
                     }
+                }
+                
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    System.out.println(e.getLocalizedMessage());
                 }
             }
         } finally {
